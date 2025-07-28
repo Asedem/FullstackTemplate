@@ -1,0 +1,7 @@
+CREATE DATABASE x;
+
+\c x;
+
+CREATE TABLE x (
+    id SERIAL PRIMARY KEY
+);
