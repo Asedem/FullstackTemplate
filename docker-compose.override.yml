@@ -9,3 +9,16 @@ services:
       - ./frontend:/app
       - /app/node_modules
     command: npm run dev -- --host 0.0.0.0
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/server:/usr/src/app/server
+
+  database:
+    ports:
+      - '5432:5432'

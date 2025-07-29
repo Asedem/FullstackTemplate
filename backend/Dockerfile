@@ -8,7 +8,9 @@ RUN apt-get update && \
 
 COPY server ./server
 
-RUN cd server && cargo build --release
+WORKDIR /usr/src/app/server
+
+RUN cargo build --release
 
 FROM debian:bookworm-slim
 

@@ -1,4 +1,5 @@
 # Fullstack template
+
 A template to write fullstack applications with Rust and VueJS
 
 ## Start Server
@@ -8,7 +9,9 @@ A template to write fullstack applications with Rust and VueJS
 
 ## Access components
 
-- Database: `localhost:5432`
-- Backend: `localhost:8080`
+- Database-Dev: `localhost:5432`
+- Backend-Dev: `localhost:8080`
 - Frontend-Dev: `localhost:3000`
 - Frontend-Prod: `localhost:8000`
+
+The Backend and the Database are not accessable from the outside, if the compose is startet in a production environment.
