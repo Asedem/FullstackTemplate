@@ -4,10 +4,11 @@ A template to write fullstack applications with Rust and VueJS
 
 ## Features
 
-- Postgres database
-- Rust backend with diesel and actix-web
-- Vue Frontend with sample application
-- Support for hot reloading in dev environment
+- [x] Postgres database
+- [x] Rust backend with diesel and actix-web
+- [x] Vue Frontend with sample application
+- [x] Support for hot reloading in dev environment
+- [ ] Auto initialization (init.py)
 
 ## Start application
 
