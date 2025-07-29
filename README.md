@@ -2,7 +2,14 @@
 
 A template to write fullstack applications with Rust and VueJS
 
-## Start Server
+## Features
+
+- Postgres database
+- Rust backend with diesel and actix-web
+- Vue Frontend with sample application
+- Support for hot reloading in dev environment
+
+## Start application
 
 - Start development Server: `docker compose up --build -d`
 - Start production Server: `docker compose -f docker-compose.yml up --build -d`
@@ -14,3 +21,7 @@ A template to write fullstack applications with Rust and VueJS
 - Frontend: `localhost:8000`
 
 The Backend and the Database are not accessable from the outside, if the compose is startet in a production environment.
+
+## Example picture
+
+![Example.png](./Example.png)
