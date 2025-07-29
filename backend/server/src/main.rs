@@ -1,6 +1,20 @@
-use actix_web::{web, App, HttpServer, Responder};
+use actix_web::{web, App, HttpServer, Responder, HttpResponse};
 use diesel::prelude::*;
-use diesel::sql_query;
+use diesel::pg::PgConnection;
+use serde::{Serialize, Deserialize};
+
+diesel::table! {
+    users (id) {
+        id -> Int4,
+        user_name -> Varchar,
+    }
+}
+
+#[derive(Debug, Serialize, Queryable)]
+pub struct User {
+    pub id: i32,
+    pub user_name: String,
+}
 
 pub fn establish_connection() -> PgConnection {
     let database_url = "postgres://dba:dba@database:5432/x";
@@ -8,11 +22,17 @@ pub fn establish_connection() -> PgConnection {
         .unwrap_or_else(|_| panic!("Error connecting to {}", database_url))
 }
 
-async fn check_connection() -> impl Responder {
+async fn get_all_users() -> impl Responder {
+    use self::users::dsl::*;
+
     let mut connection = establish_connection();
-    match sql_query("SELECT 1").execute(&mut connection) {
-        Ok(_) => "Connection successful: true",
-        Err(_) => "Connection successful: false",
+
+    let results = users
+        .load::<User>(&mut connection);
+
+    match results {
+        Ok(users_list) => HttpResponse::Ok().json(users_list),
+        Err(e) => HttpResponse::InternalServerError().body(format!("Error fetching users: {}", e)),
     }
 }
 
@@ -20,7 +40,7 @@ async fn check_connection() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .route("/", web::get().to(check_connection))
+            .route("/users", web::get().to(get_all_users))
     })
     .bind("0.0.0.0:8080")?
     .run()
