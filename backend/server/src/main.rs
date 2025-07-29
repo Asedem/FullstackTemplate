@@ -1,7 +1,8 @@
 use actix_web::{web, App, HttpServer, Responder, HttpResponse};
 use diesel::prelude::*;
+use actix_cors::Cors;
 use diesel::pg::PgConnection;
-use serde::{Serialize, Deserialize};
+use serde::Serialize;
 
 diesel::table! {
     users (id) {
@@ -39,7 +40,14 @@ async fn get_all_users() -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
+        let cors = Cors::default()
+            .allowed_origin("http://0.0.0.0:8000")
+            .allowed_methods(vec!["GET", "POST"])
+            .allowed_headers(vec!["Content-Type", "Authorization"])
+            .max_age(3600);
+
         App::new()
+            .wrap(cors)
             .route("/users", web::get().to(get_all_users))
     })
     .bind("0.0.0.0:8080")?
