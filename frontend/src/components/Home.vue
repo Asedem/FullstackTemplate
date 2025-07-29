@@ -7,7 +7,7 @@ const error = ref(null);
 
 const fetchUsers = async () => {
     try {
-        const response = await fetch('http://backend:8080/users');
+        const response = await fetch('http://localhost:8080/users');
         if (!response.ok) {
             const errorText = await response.text();
             throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
@@ -50,11 +50,11 @@ onMounted(() => {
                 <div v-for="user in users" :key="user.id" class="user-card">
                     <div class="user-avatar-wrapper">
                         <div class="user-avatar">
-                            {{ user.user.charAt(0).toUpperCase() }}
+                            {{ user.user_name.charAt(0).toUpperCase() }}
                         </div>
                         <div>
                             <p class="user-name">
-                                {{ user.user }}
+                                {{ user.user_name }}
                             </p>
                             <p class="user-id">ID: {{ user.id }}</p>
                         </div>
@@ -166,10 +166,12 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     color: #1f2937;
+    margin: 0;
 }
 
 .user-id {
     font-size: 0.875rem;
     color: #4b5563;
+    margin: 0;
 }
 </style>

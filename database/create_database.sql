@@ -10,3 +10,4 @@ CREATE TABLE users (
 INSERT INTO users (user_name) VALUES ('Simon');
 INSERT INTO users (user_name) VALUES ('Alice');
 INSERT INTO users (user_name) VALUES ('Bob');
+INSERT INTO users (user_name) VALUES ('Ina');

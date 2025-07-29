@@ -41,7 +41,7 @@ async fn get_all_users() -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         let cors = Cors::default()
-            .allowed_origin("http://0.0.0.0:8000")
+            .allowed_origin("http://localhost:8000")
             .allowed_methods(vec!["GET", "POST"])
             .allowed_headers(vec!["Content-Type", "Authorization"])
             .max_age(3600);
