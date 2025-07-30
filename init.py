@@ -1,5 +1,8 @@
 #! /usr/bin/env python3
 
+import os
+
+
 def read_string(prompt: str) -> str:
     return input(prompt)
 
@@ -49,3 +52,10 @@ replace_with_message('/', comp_file, 'x_frontend', f'{proj_id}_frontend')
 replace_with_message('/', comp_file, 'x_database', f'{proj_id}_database')
 replace_with_message('/', comp_file, 'x_backend', f'{proj_id}_backend')
 replace_with_message('/', comp_file, '5432/x', f'5432/{proj_id}')
+
+
+try:
+    os.remove('./init.py')
+    print('Project sucessfully created')
+except FileNotFoundError:
+    print('Project sucessfully created. Please remove the init.py file now')
