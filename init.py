@@ -44,7 +44,8 @@ comp_file = 'docker-compose.yml'
 
 replace_with_message('/database', 'create_database.sql', 'x', db_name)
 replace_with_message('/frontend', 'index.html', 'Fullstack template', proj_name)
-replace_with_message('/', comp_file, 'x_backend', f'{proj_id}_backend')
+replace_with_message('/', comp_file, 'x_internal_network', f'{proj_id}_internal_network')
 replace_with_message('/', comp_file, 'x_frontend', f'{proj_id}_frontend')
 replace_with_message('/', comp_file, 'x_database', f'{proj_id}_database')
-replace_with_message('/', comp_file, 'x_internal_network', f'{proj_id}_internal_network')
+replace_with_message('/', comp_file, 'x_backend', f'{proj_id}_backend')
+replace_with_message('/', comp_file, '5432/x', f'5432/{proj_id}')

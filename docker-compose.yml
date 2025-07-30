@@ -17,6 +17,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: x_backend
+    environment:
+      DATABASE_URL: "postgres://dba:dba@x_database:5432/x"
     restart: unless-stopped
     networks:
       - x_internal_network
