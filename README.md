@@ -8,7 +8,11 @@ A template to write fullstack applications with Rust and VueJS
 - [x] Rust backend with diesel and actix-web
 - [x] Vue Frontend with sample application
 - [x] Support for hot reloading in dev environment
-- [ ] Auto initialization (init.py)
+- [x] Auto initialization (init.py)
+
+## Initialization
+
+I initialize your project run the `init.py` file and follow the instructions provided by the script
 
 ## Start application
 
